@@ -97,7 +97,8 @@ public class Main {
                     
                     PdfPTable subTable = new PdfPTable(1);
                     tables[i] = subTable;
-                    subTable.setSplitRows(true);
+                    subTable.setExtendLastRow(false);
+                    subTable.setSplitRows(false);
                     subTable.setKeepTogether(false);
                     subTable.setSplitLate(false);
                 }
@@ -136,7 +137,7 @@ public class Main {
         //But the cellEvent is applied per element
         //defaultCell.setCellEvent(new DottedCell());
         defaultCell.setPadding(25);
-        defaultCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        defaultCell.setVerticalAlignment(Element.ALIGN_BASELINE);
         return defaultCell;
     }
 }
