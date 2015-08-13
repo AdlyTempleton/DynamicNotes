@@ -1,9 +1,8 @@
 package pixlepix.notes;
 
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.FileOutputStream;
-import java.io.FileReader;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.util.Random;
 
 import com.itextpdf.text.*;
@@ -15,13 +14,24 @@ import pixlepix.notes.element.ElementClassifier;
 import pixlepix.notes.element.ElementNote;
 import pixlepix.notes.lib.DottedCell;
 
+import javax.imageio.ImageIO;
+
 public class Main {
+    
+    public static BufferedImage arrow = null;
     
     public static void main(String[] args) {
         String file = args[0];
         
         String resultFile = file.replace(".txt", ".pdf");
-        
+
+        //Fetch arrow
+        try {
+            arrow = ImageIO.read(new File("resources/icon/arrow.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         try{
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(resultFile));
@@ -59,6 +69,7 @@ public class Main {
             PdfPCell defaultSuperCell = tableSuper.getDefaultCell();
             defaultSuperCell.setBorder(PdfPCell.NO_BORDER);
 
+            PdfPCell nestedCell0 = new PdfPCell();
             tableSuper.addCell(tables[0]);
             tableSuper.addCell(tables[1]);
 
@@ -97,7 +108,6 @@ public class Main {
                     
                     PdfPTable subTable = new PdfPTable(1);
                     tables[i] = subTable;
-                    subTable.setExtendLastRow(false);
                     subTable.setSplitRows(false);
                     subTable.setKeepTogether(false);
                     subTable.setSplitLate(false);

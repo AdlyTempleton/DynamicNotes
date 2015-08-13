@@ -24,11 +24,8 @@ public class ElementDefinition extends ElementNote {
         Paragraph title = new Paragraph(parts[0]);
         title.setAlignment(Element.ALIGN_CENTER);
 
-        Paragraph body = new Paragraph("\n\n" + parts[1]);
-        if (parts[1].length() > 25){
-            body.setAlignment(Element.ALIGN_CENTER);
-            
-        }
+        Paragraph body = ElementCommonUtil.paragraphSmartAlignment("\n\n" + parts[1]);
+
 
         cell.addElement(title);
         cell.addElement(body);

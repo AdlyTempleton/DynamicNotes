@@ -10,6 +10,10 @@ public class ElementClassifier {
         if(chunk.contains("=")){
             return new ElementDefinition();
         }
+        if(chunk.contains("->")){
+            return new ElementCauseEffect();
+            
+        }
         
         return new ElementText();
         

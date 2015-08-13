@@ -6,3 +6,23 @@
 *.xml
 
 *.class
+
+out
+
+.idea/vcs.xml
+
+.idea/vcs.xml
+
+notes.txt
+
+notes.pdf
+
+out/production/DynamicNotes/pixlepix/notes/element/ElementClassifier.class
+
+out/production/DynamicNotes/pixlepix/notes/element/ElementClassifier.class
+
+out/production/DynamicNotes/pixlepix/notes/element/ElementDefinition.class
+
+out/production/DynamicNotes/pixlepix/notes/element/ElementClassifier.class
+
+*.class
