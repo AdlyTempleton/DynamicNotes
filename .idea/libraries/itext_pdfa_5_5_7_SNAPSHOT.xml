@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="itext-pdfa-5.5.7-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/itext-pdfa-5.5.7-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/itext-pdfa-5.5.7-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/itext-pdfa-5.5.7-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
