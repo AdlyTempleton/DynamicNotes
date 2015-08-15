@@ -12,6 +12,10 @@ import pixlepix.notes.element.cell.DefinitionCell;
  */
 public class ElementDefinition extends ElementNote {
 
+    public ElementDefinition(String chunk) {
+        super(chunk);
+    }
+
     @Override
     public PdfPCellEvent getEvent() {
         return new DefinitionCell();

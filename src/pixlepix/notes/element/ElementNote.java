@@ -19,6 +19,15 @@ public abstract class ElementNote {
         
     }
     
+    //This should not be used unless absolutely needed
+    //It may not be formatted etc
+    public String text;
+    
+    public ElementNote(String text){
+        this.text = text;
+        
+    }
+    
     public void modifyCell(PdfPCell cell){
 
     }

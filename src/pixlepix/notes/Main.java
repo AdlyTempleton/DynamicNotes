@@ -69,7 +69,6 @@ public class Main {
             PdfPCell defaultSuperCell = tableSuper.getDefaultCell();
             defaultSuperCell.setBorder(PdfPCell.NO_BORDER);
 
-            PdfPCell nestedCell0 = new PdfPCell();
             tableSuper.addCell(tables[0]);
             tableSuper.addCell(tables[1]);
 
@@ -131,11 +130,17 @@ public class Main {
             
             
             String formattedChunk = element.reformatRawText(chunk);
-            Paragraph paragraph = new Paragraph(formattedChunk);
             element.addText(cell, formattedChunk);
 
             shortestTable.addCell(cell);
 
+            //Buffer cells improve spacing
+            //And prevent the cells from extending to the bottom of the page especially
+            PdfPCell bufferCell = new PdfPCell();
+            bufferCell.setPadding(0);
+            bufferCell.setBorder(0);
+            bufferCell.setFixedHeight(0);
+            shortestTable.addCell(bufferCell);
         }
         
     }

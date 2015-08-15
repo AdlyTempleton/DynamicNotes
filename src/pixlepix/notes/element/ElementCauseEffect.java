@@ -14,6 +14,10 @@ import java.io.IOException;
  * Created by pixlepix on 8/13/15.
  */
 public class ElementCauseEffect extends ElementNote {
+    public ElementCauseEffect(String chunk) {
+        super(chunk);
+    }
+
     @Override
     public void addText(PdfPCell cell, String text) {
         String[] parts = text.split("->");

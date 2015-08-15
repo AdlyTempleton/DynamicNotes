@@ -7,15 +7,19 @@ public class ElementClassifier {
     
     public static ElementNote getElement(String chunk){
         
-        if(chunk.contains("=")){
-            return new ElementDefinition();
+        if(chunk.contains("==")){
+            return new ElementDefinition(chunk);
+        }
+        if(chunk.startsWith("=")){
+            return new ElementLatex(chunk);
+            
         }
         if(chunk.contains("->")){
-            return new ElementCauseEffect();
+            return new ElementCauseEffect(chunk);
             
         }
         
-        return new ElementText();
+        return new ElementText(chunk);
         
     }
     
