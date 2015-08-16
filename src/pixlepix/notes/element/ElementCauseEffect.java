@@ -22,10 +22,8 @@ public class ElementCauseEffect extends ElementNote {
     public void addText(PdfPCell cell, String text) {
         String[] parts = text.split("->");
 
-        Paragraph cause = ElementCommonUtil.paragraphSmartAlignment(parts[0] + "\n\n");
-        Paragraph effect = ElementCommonUtil.paragraphSmartAlignment("\n" + parts[1]);
-        
-        cell.addElement(cause);
+        super.addText(cell, parts[0] + "\n\n");
+
         try {
             Image image = Image.getInstance("resources/icon/arrow.png");
             image.scalePercent(30F);
@@ -36,6 +34,7 @@ public class ElementCauseEffect extends ElementNote {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        cell.addElement(effect);
+
+        super.addText(cell, "\n" + parts[1]);
     }
 }

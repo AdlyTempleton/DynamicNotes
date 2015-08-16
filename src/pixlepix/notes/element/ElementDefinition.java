@@ -25,13 +25,7 @@ public class ElementDefinition extends ElementNote {
     public void addText(PdfPCell cell, String text) {
         String[] parts = text.split("=");
 
-        Paragraph title = new Paragraph(parts[0]);
-        title.setAlignment(Element.ALIGN_CENTER);
-
-        Paragraph body = ElementCommonUtil.paragraphSmartAlignment("\n\n" + parts[1]);
-
-
-        cell.addElement(title);
-        cell.addElement(body);
+        super.addText(cell, parts[0]);
+        super.addText(cell, "\n\n" + parts[1]);
     }
 }

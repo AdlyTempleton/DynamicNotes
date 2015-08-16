@@ -13,14 +13,19 @@ import com.itextpdf.text.pdf.PdfWriter;
 import pixlepix.notes.element.ElementClassifier;
 import pixlepix.notes.element.ElementNote;
 import pixlepix.notes.lib.DottedCell;
+import pixlepix.notes.lib.IconSearcher;
 
 import javax.imageio.ImageIO;
 
 public class Main {
     
     public static BufferedImage arrow = null;
+
+    public static PdfWriter writer = null;
     
     public static void main(String[] args) {
+        IconSearcher.init();
+
         String file = args[0];
         
         String resultFile = file.replace(".txt", ".pdf");
@@ -34,7 +39,7 @@ public class Main {
 
         try{
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(resultFile));
+            writer = PdfWriter.getInstance(document, new FileOutputStream(resultFile));
             document.open();
             document.newPage();
             
