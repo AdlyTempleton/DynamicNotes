@@ -25,7 +25,7 @@ public class ElementCauseEffect extends ElementNote {
         super.addText(cell, parts[0] + "\n\n");
 
         try {
-            Image image = Image.getInstance("resources/icon/arrow.png");
+            Image image = Image.getInstance("icons/arrow.png");
             image.scalePercent(30F);
             image.setAlignment(Element.ALIGN_CENTER);
             cell.addElement(image);

@@ -81,7 +81,7 @@ public abstract class ElementNote {
                 Annotation definition = new Annotation(vocab.title, vocab.definition);
 
                 p.add(anchor);
-                p.add(definition);
+                p.add(new Chunk(vocab.getIcon(), 2, -2));
             }else{
                 p.add(chunk);
             }
