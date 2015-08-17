@@ -7,11 +7,9 @@ import com.itextpdf.text.Paragraph;
  * Created by pixlepix on 8/13/15.
  */
 public class ElementCommonUtil {
-    public static Paragraph paragraphSmartAlignment(Paragraph p, String s){
-        Paragraph paragraph = new Paragraph(s);
+    public static void paragraphSmartAlignment(Paragraph p, String s){
         if (s.length() < 25){
-            paragraph.setAlignment(Element.ALIGN_CENTER);
+            p.setAlignment(Element.ALIGN_CENTER);
         }
-        return paragraph;
     }
 }

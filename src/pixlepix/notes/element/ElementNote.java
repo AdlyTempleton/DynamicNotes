@@ -3,9 +3,12 @@ package pixlepix.notes.element;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPCellEvent;
-import pixlepix.notes.Main;
 import pixlepix.notes.lib.DottedCell;
 import pixlepix.notes.lib.IconSearcher;
+import pixlepix.notes.lib.VocabDictionary;
+import pixlepix.notes.lib.VocabWord;
+
+import java.util.Arrays;
 
 /**
  * Created by pixlepix on 8/12/15.
@@ -35,9 +38,12 @@ public abstract class ElementNote {
 
     public void addText(PdfPCell cell, String text, boolean clipart) {
         Paragraph p = new Paragraph();
+        ElementCommonUtil.paragraphSmartAlignment(p, text);
         String[] words = text.split(" ");
         for(int i = 0; i < words.length; i++){
             String word = words[i];
+
+            //Check for clipart
             if(clipart){
                 Image image = IconSearcher.findFile(word);
 
@@ -62,9 +68,23 @@ public abstract class ElementNote {
                     }
                 }
             }
-            //Only gets called if image match isn't found
-            p.add(" " + words[i]);
 
+            Element chunk = new Chunk(" " + words[i]);
+
+            String suffix = String.join(" ", Arrays.copyOfRange(words, i, words.length));
+            VocabWord vocab = VocabDictionary.getWord(suffix);
+
+            if(vocab != null){
+                Anchor anchor = new Anchor(" " + words[i]);
+                anchor.setReference("#" + vocab.title);
+
+                Annotation definition = new Annotation(vocab.title, vocab.definition);
+
+                p.add(anchor);
+                p.add(definition);
+            }else{
+                p.add(chunk);
+            }
         }
         ElementCommonUtil.paragraphSmartAlignment(p, text);
         cell.addElement(p);
