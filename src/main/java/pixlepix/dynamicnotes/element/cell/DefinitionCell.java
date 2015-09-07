@@ -1,10 +1,10 @@
-package pixlepix.notes.element.cell;
+package pixlepix.dynamicnotes.element.cell;
 
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import pixlepix.notes.lib.DottedCell;
+import pixlepix.dynamicnotes.lib.DottedCell;
 
 import java.awt.*;
 

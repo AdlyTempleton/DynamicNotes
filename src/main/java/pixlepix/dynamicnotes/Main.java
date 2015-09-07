@@ -1,19 +1,17 @@
-package pixlepix.notes;
+package pixlepix.dynamicnotes;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.Random;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import pixlepix.notes.element.ElementClassifier;
-import pixlepix.notes.element.ElementNote;
-import pixlepix.notes.lib.DottedCell;
-import pixlepix.notes.lib.IconSearcher;
+import pixlepix.dynamicnotes.element.ElementClassifier;
+import pixlepix.dynamicnotes.element.ElementNote;
+import pixlepix.dynamicnotes.lib.IconSearcher;
 
 import javax.imageio.ImageIO;
 
@@ -22,13 +20,16 @@ public class Main {
     public static BufferedImage arrow = null;
 
     public static PdfWriter writer = null;
-    
-    public static void main(String[] args) {
+
+    public static void main(String[] args){
+        GuiConvert gui = new GuiConvert();
+        gui.initUI();
+        gui.setVisible(true);
+    }
+
+    public static void convert(String text) {
         IconSearcher.init();
 
-        String file = args[0];
-        
-        String resultFile = file.replace(".txt", ".pdf");
 
         //Fetch arrow
         try {
@@ -38,17 +39,25 @@ public class Main {
         }
 
         try{
+
+            
+            String[] lines = text.split("\n");
+
+
+            String chunk = "";
+
+            //Init output file
+            String filename = lines[0].replaceAll(" ", "");
+            File resultFile = new File(filename);
+
+            //Init document
             Document document = new Document();
             writer = PdfWriter.getInstance(document, new FileOutputStream(resultFile));
             document.open();
             document.newPage();
-            
-            BufferedReader reader = new BufferedReader(new FileReader(file));
 
-            String line;
-            String chunk = "";
-            
-            while((line = reader.readLine()) != null) {
+            //Read through lines of file
+            for(String line : lines) {
                 if(line.trim().isEmpty()){
                     readChunk(chunk, document);
                     chunk = "";
@@ -66,6 +75,7 @@ public class Main {
                 readChunk(chunk, document);
             }
 
+            //Create outer table
             tableSuper = new PdfPTable(2);
             tableSuper.setKeepTogether(false);
             tableSuper.setSplitLate(false);
@@ -73,15 +83,17 @@ public class Main {
 
             PdfPCell defaultSuperCell = tableSuper.getDefaultCell();
             defaultSuperCell.setBorder(PdfPCell.NO_BORDER);
-
             tableSuper.addCell(tables[0]);
             tableSuper.addCell(tables[1]);
-
-
             document.add(tableSuper);
-
             document.close();
-            reader.close();
+
+            //Open file in browser
+            Desktop d = Desktop.getDesktop();
+            d.open(resultFile);
+
+
+
         }catch (Exception e){
             e.printStackTrace();
         }

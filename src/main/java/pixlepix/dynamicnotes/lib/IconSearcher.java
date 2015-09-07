@@ -1,11 +1,8 @@
-package pixlepix.notes.lib;
+package pixlepix.dynamicnotes.lib;
 
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Image;
-import com.sun.xml.internal.ws.util.StringUtils;
-import uk.ac.shef.wit.simmetrics.similaritymetrics.BlockDistance;
-import uk.ac.shef.wit.simmetrics.similaritymetrics.CosineSimilarity;
-import uk.ac.shef.wit.simmetrics.similaritymetrics.Levenshtein;
+import org.simmetrics.metrics.Levenshtein;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,13 +33,13 @@ public class IconSearcher {
 
 
         for(String potentialMatch : icons){
-            if(metric.getSimilarity(potentialMatch.toLowerCase(), target.toLowerCase()) > .8F){
+            if(metric.compare(potentialMatch.toLowerCase(), target.toLowerCase()) > .8F){
                 return potentialMatch;
             }
-            if(metric.getSimilarity(potentialMatch.toLowerCase().replace("-", " "), target.toLowerCase()) > .8F){
+            if(metric.compare(potentialMatch.toLowerCase().replace("-", " "), target.toLowerCase()) > .8F){
                 return potentialMatch;
             }
-            if(metric.getSimilarity(potentialMatch.toLowerCase().replace("", " "), target.toLowerCase()) > .8F){
+            if(metric.compare(potentialMatch.toLowerCase().replace("", " "), target.toLowerCase()) > .8F){
                 return potentialMatch;
             }
         }

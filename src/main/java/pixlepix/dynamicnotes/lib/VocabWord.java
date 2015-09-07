@@ -1,4 +1,4 @@
-package pixlepix.notes.lib;
+package pixlepix.dynamicnotes.lib;
 
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Image;

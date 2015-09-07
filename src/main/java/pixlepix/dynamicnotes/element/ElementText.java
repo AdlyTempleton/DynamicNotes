@@ -1,4 +1,4 @@
-package pixlepix.notes.element;
+package pixlepix.dynamicnotes.element;
 
 /**
  * Created by pixlepix on 8/12/15.

@@ -1,4 +1,4 @@
-package pixlepix.notes.lib;
+package pixlepix.dynamicnotes.lib;
 
 import java.util.ArrayList;
 
@@ -21,6 +21,6 @@ public class VocabDictionary {
         return null;
     }
 
-    public static ArrayList<VocabWord> words = new ArrayList<>();
+    public static ArrayList<VocabWord> words = new ArrayList<VocabWord>();
 
 }

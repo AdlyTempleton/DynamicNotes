@@ -25,4 +25,11 @@ out/production/DynamicNotes/pixlepix/notes/element/ElementDefinition.class
 
 out/production/DynamicNotes/pixlepix/notes/element/ElementClassifier.class
 
+out
+
+*.iml
+.idea
+lib
+
+
 *.class

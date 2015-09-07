@@ -1,12 +1,9 @@
-package pixlepix.notes.element;
+package pixlepix.dynamicnotes.element;
 
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.codec.PngImage;
-import pixlepix.notes.Main;
 
 import java.io.IOException;
 

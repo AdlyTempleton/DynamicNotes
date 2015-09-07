@@ -1,10 +1,8 @@
-package pixlepix.notes.element;
+package pixlepix.dynamicnotes.element;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPCellEvent;
-import com.itextpdf.text.pdf.codec.BmpImage;
 import org.scilab.forge.jlatexmath.TeXFormula;
 
 import java.awt.*;
@@ -36,10 +34,10 @@ public class ElementLatex extends ElementNote{
 
         TeXFormula formula = TeXFormula.getPartialTeXFormula(text.replaceFirst("=", ""));
         String filename = ".latex/" + text.hashCode() + ".png";
-        //if(!new File(filename).exists()) {
+        if(!new File(filename).exists()) {
             TeXFormula.setDPITarget(720F);
             formula.createImage("png", 0, 12F, filename, Color.WHITE, Color.BLACK, true);
-        //}
+        }
         try {
             Image image = Image.getInstance(filename);
             //We print the image large and scale it smaller for better resolution

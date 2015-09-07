@@ -1,4 +1,4 @@
-package pixlepix.notes.element;
+package pixlepix.dynamicnotes.element;
 
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Paragraph;

@@ -1,12 +1,12 @@
-package pixlepix.notes.element;
+package pixlepix.dynamicnotes.element;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPCellEvent;
-import pixlepix.notes.lib.DottedCell;
-import pixlepix.notes.lib.IconSearcher;
-import pixlepix.notes.lib.VocabDictionary;
-import pixlepix.notes.lib.VocabWord;
+import pixlepix.dynamicnotes.lib.DottedCell;
+import pixlepix.dynamicnotes.lib.IconSearcher;
+import pixlepix.dynamicnotes.lib.VocabDictionary;
+import pixlepix.dynamicnotes.lib.VocabWord;
 
 import java.util.Arrays;
 
