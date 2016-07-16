@@ -3,6 +3,7 @@ package pixlepix.dynamicnotes;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.Date;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
@@ -41,18 +42,20 @@ public class Main {
         try{
 
             
-            String[] lines = text.split("\n");
+            String[] lines = text.replaceAll("\r", "").split("\n");
 
 
             String chunk = "";
 
             //Init output file
-            String filename = lines[0].replaceAll(" ", "");
+            String filename = lines[0].replaceAll(" ", "").replaceAll("\r", "") + ".pdf";
             File resultFile = new File(filename);
+            resultFile.delete();
 
             //Init document
             Document document = new Document();
             writer = PdfWriter.getInstance(document, new FileOutputStream(resultFile));
+            writer.flush();
             document.open();
             document.newPage();
 
@@ -87,10 +90,14 @@ public class Main {
             tableSuper.addCell(tables[1]);
             document.add(tableSuper);
             document.close();
+            writer.close();
 
             //Open file in browser
             Desktop d = Desktop.getDesktop();
             d.open(resultFile);
+
+            stage = 0;
+            tables = new PdfPTable[2];
 
 
 
